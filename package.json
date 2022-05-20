@@ -1,0 +1,37 @@
+{
+  "name": "@dsup/jenn-demo",
+  "author": "Itential Automation Platform",
+  "version": "0.0.1",
+  "description": "This is a demo prebuilt",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "echo not needed npm publish --access=public --registry=http://registry.npmjs.org",
+    "validateSchema": "node test/manifestTester.js manifest.json manifest-schema.json",
+    "validateSchemaLinks": "node test/manifestLinkTester.js manifest.json",
+    "generateImageLinks": "node utils/generateImageLinks.js"
+  },
+  "repository": {
+    "type": "gitlab",
+    "hostname": "gitlab.com",
+    "path": "itentialopensource/pre-built-automations"
+  },
+  "keywords": [
+    "Itential",
+    "IAP",
+    "artifacts"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "ajv": "^6.12.6",
+    "better-ajv-errors": "^1.2.0",
+    "fs-extra": "^7.0.1",
+    "r2": "^2.0.1"
+  },
+  "IAPDependencies": {
+    "@itential/app-workflow_engine": "",
+    "@itential/app-configuration_manager": "",
+    "@itential/app-json_forms": "",
+    "@itential/app-automation_catalog": ""
+  },
+  "IAPCategories": []
+}

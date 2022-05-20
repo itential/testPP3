@@ -1,0 +1,40 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "_id": "62290d35de85ce00d0f529db",
+      "name": "testprebuilt-gc",
+      "treeId": "62290d353c769800d0236336",
+      "version": "initial",
+      "deviceType": "arista01",
+      "root": {
+        "name": "base",
+        "attributes": {
+          "devices": [],
+          "remediationWorkflow": null,
+          "configId": "62290d35de85ce00d0f529da",
+          "export": {
+            "_id": "62290d35de85ce00d0f529da",
+            "deviceType": "arista01",
+            "lines": [],
+            "template": "",
+            "created": "2022-03-09T20:25:24.461Z",
+            "createdBy": "62262c62e578fc77f0f3f14d",
+            "lastUpdated": "2022-03-21T17:24:22.991Z",
+            "lastUpdatedBy": "62262c62e578fc77f0f3f14d"
+          }
+        },
+        "children": []
+      },
+      "created": "1970-01-01T00:00:00.000Z",
+      "createdBy": "62262c62e578fc77f0f3f14d",
+      "lastUpdated": "2022-03-21T17:24:22.990Z",
+      "lastUpdatedBy": "62262c62e578fc77f0f3f14d",
+      "gbac": {
+        "write": [],
+        "read": []
+      },
+      "variables": {}
+    }
+  ]
+}

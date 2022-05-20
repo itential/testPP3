@@ -1,0 +1,209 @@
+{
+  "canvasVersion": 1,
+  "created": "2022-02-22T21:55:14.120Z",
+  "createdVersion": "5.40.5-2021.1.52.0",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "font_size": 12,
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.72.0",
+  "last_updated": "2022-05-20T18:43:54.634Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "name": "Sample Parent",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "tasks": {
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": 0,
+      "y": 0.5
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 1,
+      "y": 0.5
+    },
+    "1c92": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Run Child Job",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Sample Child",
+          "variables": {},
+          "data_array": [
+            {},
+            {}
+          ],
+          "transformation": "",
+          "loopType": "sequential"
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": 0.46348517715112075,
+      "y": 0.3461962513781698
+    },
+    "7dfd": {
+      "name": "getGoldenConfigTree",
+      "canvasName": "getGoldenConfigTree",
+      "summary": "Get summary of a Golden Config tree.",
+      "description": "Get summary of the specified Golden Config tree.",
+      "location": "Application",
+      "locationType": null,
+      "app": "ConfigurationManager",
+      "type": "automatic",
+      "displayName": "ConfigurationManager",
+      "variables": {
+        "incoming": {
+          "treeId": "62290d353c769800d0236336"
+        },
+        "outgoing": {
+          "tree": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.3080260303687636,
+      "y": 0.5005512679162073,
+      "scheduled": false
+    },
+    "f536": {
+      "name": "childJob",
+      "canvasName": "childJob",
+      "summary": "Run Child Job",
+      "description": "Runs a child job inside a workflow.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "task": "",
+          "workflow": "Sample Child 2",
+          "variables": {},
+          "data_array": "",
+          "transformation": "",
+          "loopType": ""
+        },
+        "outgoing": {
+          "job_details": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "job",
+      "x": 0.6442516268980477,
+      "y": 0.49834619625137816
+    },
+    "84b": {
+      "name": "stub",
+      "canvasName": "stub",
+      "summary": "Stub",
+      "description": "Create a stub for an automated task",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "automatic",
+      "displayName": "Tools",
+      "variables": {
+        "incoming": {
+          "type": "success",
+          "delay": "",
+          "response": "test"
+        },
+        "outgoing": {
+          "response": null
+        },
+        "error": "",
+        "decorators": []
+      },
+      "deprecated": false,
+      "groups": [],
+      "actor": "Pronghorn",
+      "x": 0.8402024584237165,
+      "y": 0.39911797133406834,
+      "scheduled": false
+    }
+  },
+  "transitions": {
+    "workflow_start": {
+      "7dfd": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "1c92": {
+      "f536": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "7dfd": {
+      "1c92": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "f536": {
+      "84b": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "555d": {},
+    "84b": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "type": "automation",
+  "preAutomationTime": 0,
+  "sla": 0,
+  "tags": [],
+  "groups": []
+}

@@ -1,0 +1,26 @@
+{
+  "_id": "622b7ef4120648753d6bdac3",
+  "name": "Jenn Demo",
+  "data": {
+    "description": "",
+    "workflowId": "Sample Parent",
+    "formId": "Sample JSON Form",
+    "formData": {
+      "text1": ""
+    },
+    "gbac": {
+      "write": [],
+      "read": []
+    },
+    "lastUpdated": "2022-03-11T16:55:29.329Z",
+    "modifiedById": "62262c62e578fc77f0f3f14d",
+    "modifiedByUsername": "admin@pronghorn"
+  },
+  "lastModifiedBy": "b08826c13795:181",
+  "lastRunAt": null,
+  "nextRunAt": null,
+  "priority": 0,
+  "repeatInterval": null,
+  "repeatTimezone": null,
+  "type": "normal"
+}

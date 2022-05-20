@@ -1,0 +1,67 @@
+{
+  "id": "62155c76d490f300cf970230",
+  "bindingSchema": {},
+  "created": "2022-02-22T21:58:14.390Z",
+  "createdBy": "admin@pronghorn",
+  "description": "",
+  "lastUpdated": "2022-03-21T17:24:22.963Z",
+  "lastUpdatedBy": "admin@pronghorn",
+  "name": "Sample JSON Form",
+  "schema": {
+    "title": "Sample JSON Form",
+    "description": "",
+    "type": "object",
+    "required": [],
+    "properties": {
+      "text1": {
+        "type": "string",
+        "title": "Text 1",
+        "description": "",
+        "default": ""
+      },
+      "number1": {
+        "type": "number",
+        "title": "Number 1",
+        "description": ""
+      }
+    }
+  },
+  "struct": {
+    "type": "array",
+    "items": [
+      {
+        "nodeId": "7dd399c9-abed-4144-a18e-f0890c4df9cd",
+        "type": "string",
+        "title": "Text 1",
+        "description": "",
+        "placeholder": "Enter text",
+        "required": false,
+        "readOnly": false,
+        "binding": false,
+        "rel": "item",
+        "targetPointer": "/default",
+        "default": ""
+      },
+      {
+        "nodeId": "6c444c74-cf28-448e-8b14-c9e5a0c26c19",
+        "type": "number",
+        "widget": "updown",
+        "title": "Number 1",
+        "description": "",
+        "placeholder": "Enter a number",
+        "required": false
+      }
+    ]
+  },
+  "uiSchema": {
+    "text1": {
+      "ui:placeholder": "Enter text"
+    },
+    "number1": {
+      "ui:placeholder": "Enter a number",
+      "ui:widget": "updown"
+    }
+  },
+  "validationSchema": {},
+  "version": "2020.1"
+}

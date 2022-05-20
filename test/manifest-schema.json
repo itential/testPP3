@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "iap-artifact-bundle",
+  "type": "object",
+  "title": "Artifact Bundle Schema",
+  "default": null,
+  "additionalProperties": false,
+  "definitions": {
+    "tagged": {
+      "$id": "#/properties/properties/properties/tagged",
+      "type": "array",
+      "title": "The Tagged Item",
+      "description": "These are the items that need to be tagged",
+      "uniqueItems": true,
+      "items": {
+        "$id": "#/properties/properties/properties/tagged/items",
+        "type": "string",
+        "title": "The Tagged Items",
+        "default": "",
+        "examples": [
+          "mop-example-1",
+          "mop-analytic-example-1",
+          "workflow-example-1"
+        ],
+        "pattern": "^(.*)$"
+      }
+    }
+  },
+  "required": [
+    "bundleName",
+    "version",
+    "createdEpoch",
+    "artifacts"
+  ],
+  "properties": {
+    "bundleName": {
+      "$id": "#/properties/bundleName",
+      "type": "string",
+      "title": "The Bundle Name",
+      "description": "Unique identifier for this bundle of artifacts.",
+      "default": "",
+      "examples": [
+        "ExampleBundle"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "version": {
+      "$id": "#/properties/version",
+      "type": "string",
+      "title": "The Version",
+      "description": "The version of this bundle",
+      "default": "",
+      "examples": [
+        "1.2.3"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "fingerprint": {
+      "$id": "#/properties/fingerprint",
+      "type": "string",
+      "title": "The Fingerprint",
+      "description": "For use in future implementations of  installable modules where additional security measures need to be implemented. ",
+      "default": "",
+      "examples": [
+        "Some verifiable token"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "createdEpoch": {
+      "$id": "#/properties/createdEpoch",
+      "type": "string",
+      "title": "The Created Time",
+      "description": "The date, in milliseconds since the unix epoch, for when this bundle was created/updated. Usually this is value of Date.now() or calling getTime() on a js Date object",
+      "default": "",
+      "examples": [
+        "1554836984020",
+        "result from Date.now()"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "artifacts": {
+      "$id": "#/properties/artifacts",
+      "type": "array",
+      "title": "The Artifacts ",
+      "description": "List of artifacts in this bundle. Note that each item must be unique and duplicates will fail validation",
+      "default": null,
+      "uniqueItems": true,
+      "items": {
+        "$id": "#/properties/artifacts/items",
+        "type": "object",
+        "title": "Artifact items",
+        "default": null,
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$id": "#/properties/artifacts/items/properties/id",
+            "type": "string",
+            "title": "The Artifact Id",
+            "description": "Unique Id identifying this artifact. ",
+            "default": "",
+            "examples": [
+              "workflow-example-1",
+              "mop-template-1"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "name": {
+            "$id": "#/properties/artifacts/items/properties/name",
+            "type": "string",
+            "title": "The Artifact Name",
+            "description": "The Name identifying this artifact",
+            "default": "",
+            "examples": [
+              "My Worflow1"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "type": {
+            "$id": "#/properties/artifacts/items/properties/type",
+            "type": "string",
+            "enum": [
+              "mop-analytic-template",
+              "mop-template",
+              "workflow",
+              "json-forms",
+              "tag",
+              "template",
+              "forms",
+              "golden-config",
+              "service-catalog",
+              "ac-agenda-job",
+              "adapter",
+              "app",
+              "transformation"
+            ],
+            "title": "The Artifact Type ",
+            "description": "The type of artifact(s) this entry encompasses. Must be one of the supported types listed in the enum",
+            "default": "",
+            "examples": [
+              "mop-analytic-template",
+              "mop-template",
+              "workflow",
+              "tag",
+              "forms",
+              "golden-config"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "location": {
+            "$id": "#/properties/artifacts/items/properties/location",
+            "type": "string",
+            "title": "The Artifact Location",
+            "description": "Path, relative to the root of this bundle, to either a specific artifact file or a directory of artifacts of a specific type. Future implementations may allow for URLs to external assets",
+            "default": "",
+            "examples": [
+              "/bundles/ExampleBundle/workflow/myWorkflow1.json",
+              "/bundles/workflows/"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "description": {
+            "$id": "#/properties/artifacts/items/properties/description",
+            "type": "string",
+            "title": "The Description ",
+            "description": "The description of what this artifact is ",
+            "default": "",
+            "examples": [
+              "This artifact does things and stuff"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "properties": {
+            "$id": "#/properties/artifacts/items/properties/properties",
+            "type": "object",
+            "title": "The Properties Schema",
+            "description": "Additional properties that may be needed for a type during it's installations",
+            "properties": {
+              "tagged": {
+                "$ref": "#/definitions/tagged"
+              }
+            }
+          }
+        },
+        "if": {
+          "properties": {
+            "type": {
+              "enum": [
+                "tag"
+              ]
+            }
+          }
+        },
+        "then": {
+          "required": [
+            "id",
+            "name",
+            "type",
+            "properties"
+          ]
+        },
+        "else": {
+          "required": [
+            "id",
+            "name",
+            "type",
+            "location"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "canvasVersion": 1,
+  "created": "2022-02-22T21:55:43.068Z",
+  "createdVersion": "5.40.5-2021.1.52.0",
+  "created_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "description": "",
+  "font_size": 12,
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  },
+  "lastUpdatedVersion": "5.40.5-2021.1.72.0",
+  "last_updated": "2022-05-19T16:23:38.039Z",
+  "last_updated_by": {
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn",
+    "firstname": "admin",
+    "inactive": false,
+    "email": ""
+  },
+  "name": "Sample Child",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{24}$"
+      },
+      "initiator": {
+        "type": "string"
+      }
+    }
+  },
+  "tasks": {
+    "3151": {
+      "name": "transformation",
+      "canvasName": "transformation",
+      "summary": "Sample JST",
+      "description": "Perform a JSON Transformation using the JST library.",
+      "location": "Application",
+      "locationType": null,
+      "app": "WorkFlowEngine",
+      "type": "operation",
+      "displayName": "WorkFlowEngine",
+      "variables": {
+        "incoming": {
+          "tr_id": "62155c8dc62a2f00dd49bc93",
+          "variableMap": {
+            "string1": "hello",
+            "string2": "world"
+          },
+          "options": {
+            "extractOutput": true,
+            "validateIncoming": true,
+            "revertToDefaultValue": true
+          }
+        },
+        "outgoing": {
+          "outputString": null
+        }
+      },
+      "deprecated": false,
+      "groups": [],
+      "x": 0.34431372549019607,
+      "y": 0.4988038277511962,
+      "task_name": "Sample JST",
+      "retrySettings": null
+    },
+    "workflow_start": {
+      "name": "workflow_start",
+      "groups": [],
+      "x": 0,
+      "y": 0.5
+    },
+    "workflow_end": {
+      "name": "workflow_end",
+      "groups": [],
+      "x": 1,
+      "y": 0.5
+    },
+    "cd94": {
+      "name": "ViewData",
+      "canvasName": "ViewData",
+      "summary": "View Data",
+      "description": "Displays a message and runtime data to an operator. This can be used to request a decision, or used for acknowledgement only.",
+      "location": "Application",
+      "app": "WorkFlowEngine",
+      "displayName": "Tools",
+      "type": "manual",
+      "variables": {
+        "incoming": {
+          "header": "",
+          "message": "",
+          "body": "$var.3151.outputString",
+          "variables": {},
+          "btn_success": "ok",
+          "btn_failure": ""
+        },
+        "outgoing": {},
+        "error": "",
+        "decorators": []
+      },
+      "view": "/workflow_engine/task/ViewData",
+      "deprecated": false,
+      "groups": [],
+      "x": 0.6334056399132321,
+      "y": 0.4994487320837927,
+      "scheduled": false
+    }
+  },
+  "transitions": {
+    "1607": {},
+    "3151": {
+      "cd94": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_start": {
+      "3151": {
+        "type": "standard",
+        "state": "success"
+      }
+    },
+    "workflow_end": {},
+    "cd94": {
+      "workflow_end": {
+        "type": "standard",
+        "state": "success"
+      }
+    }
+  },
+  "type": "automation",
+  "tags": [],
+  "groups": []
+}

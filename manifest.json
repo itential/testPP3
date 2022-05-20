@@ -1,0 +1,71 @@
+{
+  "bundleName": "@dsup/jenn-demo",
+  "version": "0.0.1",
+  "fingerprint": "6287f8106a443a00a8c3bfd8",
+  "createdEpoch": "1653078032146",
+  "artifacts": [
+    {
+      "id": "Jenn Demo",
+      "name": "Jenn Demo",
+      "type": "ac-agenda-job",
+      "location": "/bundles/ac_agenda_jobs/Jenn Demo.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Sample Parent",
+      "name": "Sample Parent",
+      "type": "workflow",
+      "location": "/bundles/workflows/Sample Parent.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Sample Child",
+      "name": "Sample Child",
+      "type": "workflow",
+      "location": "/bundles/workflows/Sample Child.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Sample Child 2",
+      "name": "Sample Child 2",
+      "type": "workflow",
+      "location": "/bundles/workflows/Sample Child 2.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "Sample JSON Form",
+      "name": "Sample JSON Form",
+      "type": "json-forms",
+      "location": "/bundles/json_forms/Sample JSON Form.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "testprebuilt-gc",
+      "name": "testprebuilt-gc",
+      "type": "golden-config",
+      "location": "/bundles/ucm_golden_configs/testprebuilt-gc.json",
+      "properties": {
+        "entryPoint": false
+      }
+    },
+    {
+      "id": "62155c8dc62a2f00dd49bc93",
+      "name": "Sample JST",
+      "type": "transformation",
+      "location": "/bundles/transformations/Sample JST.json",
+      "properties": {
+        "entryPoint": false
+      }
+    }
+  ]
+}

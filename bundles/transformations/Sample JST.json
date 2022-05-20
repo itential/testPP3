@@ -1,0 +1,108 @@
+{
+  "_id": "62155c8dc62a2f00dd49bc93",
+  "name": "Sample JST",
+  "description": "",
+  "incoming": [
+    {
+      "$id": "string1",
+      "type": "string"
+    },
+    {
+      "$id": "string2",
+      "type": "string"
+    }
+  ],
+  "outgoing": [
+    {
+      "$id": "outputString",
+      "type": "object",
+      "properties": {
+        "outputString": {
+          "type": "string",
+          "examples": [
+            "test"
+          ]
+        }
+      },
+      "required": []
+    }
+  ],
+  "steps": [
+    {
+      "id": 1,
+      "type": "method",
+      "library": "String",
+      "method": "concat",
+      "args": [
+        null,
+        null
+      ],
+      "view": {
+        "row": 1,
+        "col": 2
+      }
+    },
+    {
+      "id": 2,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "string1",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/0/value"
+      }
+    },
+    {
+      "id": 3,
+      "type": "assign",
+      "from": {
+        "location": "incoming",
+        "name": "string2",
+        "ptr": ""
+      },
+      "to": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/args/1/value"
+      }
+    },
+    {
+      "id": 4,
+      "type": "assign",
+      "from": {
+        "location": "method",
+        "name": 1,
+        "ptr": "/return"
+      },
+      "to": {
+        "location": "outgoing",
+        "name": "outputString",
+        "ptr": "/outputString"
+      }
+    }
+  ],
+  "functions": [],
+  "comments": [],
+  "view": {
+    "col": 3,
+    "row": 5
+  },
+  "created": "2022-03-21T17:24:22.803Z",
+  "createdBy": {
+    "_id": "62262c62e578fc77f0f3f14d",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "lastUpdated": "2022-03-31T16:41:27.672Z",
+  "lastUpdatedBy": {
+    "_id": "62262c62e578fc77f0f3f14d",
+    "provenance": "local_aaa",
+    "username": "admin@pronghorn"
+  },
+  "version": "3.17.7-2021.1.7",
+  "tags": []
+}

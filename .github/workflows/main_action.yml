@@ -1,0 +1,106 @@
+# This is a basic workflow to help you get started with Actions
+
+name: main-prebuilts-CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push events but only for the main branch
+  push:
+    branches: 
+      - main
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  # Lint code, test code quality, and ensure that there are no insecure dependencies
+  security: 
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'Skip CI')"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Verifying security
+        continue-on-error: true
+        run: |
+          npm i 
+          echo "node version: $(node --version)"
+          echo "npm version: $(npm --version)"
+          npm audit --registry=https://registry.npmjs.org
+  
+  # Validates schema of manifest.json
+  schema_validation: 
+    needs: security
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'Skip CI')"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validating schema of manifest.json
+        run: |
+          npm i
+          npm run validateSchema
+
+  # Validates links in manifest.json        
+  schemaLinks_validation: 
+    needs: security
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'Skip CI')"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validating schema links in manifest.json
+        run: |
+          npm i
+          npm run validateSchemaLinks
+  
+  # Version bump
+  version_bump: 
+    needs: [schema_validation, schemaLinks_validation]
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'Skip CI')"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Version Bump
+        run: chmod +x ./scripts/ver_bump.sh && ./scripts/ver_bump.sh
+
+  # Generates artifact.json 
+  generate:
+    needs: version_bump
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'Skip CI')"
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Generate Artifact.json file
+        run: chmod +x ./scripts/commit.sh && ./scripts/commit.sh
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with: 
+          name: artifact
+          path: artifact.json
+        
+  # Promotes artifact.json to IAP environment
+  promote: 
+    needs: generate
+    runs-on: self-hosted
+    if: "!contains(github.event.head_commit.message, 'Skip CI')"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download artifact.json from previous job 
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact
+      - name: Promote to IAP
+        env: 
+          IAP_HOSTNAME: ${{ secrets.IAP_HOSTNAME }}
+          IAP_USERNAME: ${{ secrets.IAP_USERNAME }}
+          IAP_PW: ${{ secrets.IAP_PW }} 
+          IAP_TOKEN: ${{ secrets.IAP_TOKEN }}
+        run: |
+          if ! python3 ./scripts/promote.py ./artifact.json; then
+            echo -e "\033[0;31mERROR: ***********************************************************************************"
+            echo "ERROR: There was an issue promoting artifact.json to IAP."
+            echo -e "ERROR: ***********************************************************************************\033[0m"
+            exit 1
+          fi 
