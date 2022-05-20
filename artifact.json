@@ -1,0 +1,812 @@
+{
+  "metadata": {
+    "name": "@dsup/jenn-demo",
+    "version": "0.0.2",
+    "description": "This is a demo prebuilt",
+    "license": "Apache-2.0",
+    "repository": {
+      "type": "gitlab",
+      "hostname": "gitlab.com",
+      "path": "itentialopensource/pre-built-automations"
+    },
+    "keywords": [
+      "Itential",
+      "IAP",
+      "artifacts"
+    ],
+    "author": "Itential Automation Platform",
+    "IAPDependencies": {
+      "@itential/app-workflow_engine": "",
+      "@itential/app-configuration_manager": "",
+      "@itential/app-json_forms": "",
+      "@itential/app-automation_catalog": ""
+    }
+  },
+  "manifest": {
+    "bundleName": "@dsup/jenn-demo",
+    "fingerprint": "6287f8106a443a00a8c3bfd8",
+    "createdEpoch": "1653078032146",
+    "artifacts": [
+      {
+        "id": "Jenn Demo",
+        "name": "Jenn Demo",
+        "type": "ac-agenda-job",
+        "location": "/bundles/ac_agenda_jobs/Jenn Demo.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "Sample Parent",
+        "name": "Sample Parent",
+        "type": "workflow",
+        "location": "/bundles/workflows/Sample Parent.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "Sample Child",
+        "name": "Sample Child",
+        "type": "workflow",
+        "location": "/bundles/workflows/Sample Child.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "Sample Child 2",
+        "name": "Sample Child 2",
+        "type": "workflow",
+        "location": "/bundles/workflows/Sample Child 2.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "Sample JSON Form",
+        "name": "Sample JSON Form",
+        "type": "json-forms",
+        "location": "/bundles/json_forms/Sample JSON Form.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "testprebuilt-gc",
+        "name": "testprebuilt-gc",
+        "type": "golden-config",
+        "location": "/bundles/ucm_golden_configs/testprebuilt-gc.json",
+        "properties": {
+          "entryPoint": false
+        }
+      },
+      {
+        "id": "62155c8dc62a2f00dd49bc93",
+        "name": "Sample JST",
+        "type": "transformation",
+        "location": "/bundles/transformations/Sample JST.json",
+        "properties": {
+          "entryPoint": false
+        }
+      }
+    ]
+  },
+  "bundles": [
+    {
+      "type": "ac-agenda-job",
+      "data": {
+        "_id": "622b7ef4120648753d6bdac3",
+        "name": "Jenn Demo",
+        "data": {
+          "description": "",
+          "workflowId": "Sample Parent",
+          "formId": "Sample JSON Form",
+          "formData": {
+            "text1": ""
+          },
+          "gbac": {
+            "write": [],
+            "read": []
+          },
+          "lastUpdated": "2022-03-11T16:55:29.329Z",
+          "modifiedById": "62262c62e578fc77f0f3f14d",
+          "modifiedByUsername": "admin@pronghorn"
+        },
+        "lastModifiedBy": "b08826c13795:181",
+        "lastRunAt": null,
+        "nextRunAt": null,
+        "priority": 0,
+        "repeatInterval": null,
+        "repeatTimezone": null,
+        "type": "normal"
+      }
+    },
+    {
+      "type": "workflow",
+      "data": {
+        "canvasVersion": 1,
+        "created": "2022-02-22T21:55:14.120Z",
+        "createdVersion": "5.40.5-2021.1.52.0",
+        "created_by": {
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn",
+          "firstname": "admin",
+          "inactive": false,
+          "email": ""
+        },
+        "font_size": 12,
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "lastUpdatedVersion": "5.40.5-2021.1.72.0",
+        "last_updated": "2022-05-20T18:43:54.634Z",
+        "last_updated_by": {
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn",
+          "firstname": "admin",
+          "inactive": false,
+          "email": ""
+        },
+        "name": "Sample Parent",
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{24}$"
+            },
+            "initiator": {
+              "type": "string"
+            }
+          }
+        },
+        "tasks": {
+          "workflow_start": {
+            "name": "workflow_start",
+            "groups": [],
+            "x": 0,
+            "y": 0.5
+          },
+          "workflow_end": {
+            "name": "workflow_end",
+            "groups": [],
+            "x": 1,
+            "y": 0.5
+          },
+          "1c92": {
+            "name": "childJob",
+            "canvasName": "childJob",
+            "summary": "Run Child Job",
+            "description": "Runs a child job inside a workflow.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "task": "",
+                "workflow": "Sample Child",
+                "variables": {},
+                "data_array": [
+                  {},
+                  {}
+                ],
+                "transformation": "",
+                "loopType": "sequential"
+              },
+              "outgoing": {
+                "job_details": null
+              }
+            },
+            "deprecated": false,
+            "groups": [],
+            "actor": "job",
+            "x": 0.46348517715112075,
+            "y": 0.3461962513781698
+          },
+          "7dfd": {
+            "name": "getGoldenConfigTree",
+            "canvasName": "getGoldenConfigTree",
+            "summary": "Get summary of a Golden Config tree.",
+            "description": "Get summary of the specified Golden Config tree.",
+            "location": "Application",
+            "locationType": null,
+            "app": "ConfigurationManager",
+            "type": "automatic",
+            "displayName": "ConfigurationManager",
+            "variables": {
+              "incoming": {
+                "treeId": "62290d353c769800d0236336"
+              },
+              "outgoing": {
+                "tree": null
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "groups": [],
+            "actor": "Pronghorn",
+            "x": 0.3080260303687636,
+            "y": 0.5005512679162073,
+            "scheduled": false
+          },
+          "f536": {
+            "name": "childJob",
+            "canvasName": "childJob",
+            "summary": "Run Child Job",
+            "description": "Runs a child job inside a workflow.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "task": "",
+                "workflow": "Sample Child 2",
+                "variables": {},
+                "data_array": "",
+                "transformation": "",
+                "loopType": ""
+              },
+              "outgoing": {
+                "job_details": null
+              }
+            },
+            "deprecated": false,
+            "groups": [],
+            "actor": "job",
+            "x": 0.6442516268980477,
+            "y": 0.49834619625137816
+          },
+          "84b": {
+            "name": "stub",
+            "canvasName": "stub",
+            "summary": "Stub",
+            "description": "Create a stub for an automated task",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "automatic",
+            "displayName": "Tools",
+            "variables": {
+              "incoming": {
+                "type": "success",
+                "delay": "",
+                "response": "test"
+              },
+              "outgoing": {
+                "response": null
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "groups": [],
+            "actor": "Pronghorn",
+            "x": 0.8402024584237165,
+            "y": 0.39911797133406834,
+            "scheduled": false
+          }
+        },
+        "transitions": {
+          "workflow_start": {
+            "7dfd": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "workflow_end": {},
+          "1c92": {
+            "f536": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "7dfd": {
+            "1c92": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "f536": {
+            "84b": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "555d": {},
+          "84b": {
+            "workflow_end": {
+              "type": "standard",
+              "state": "success"
+            }
+          }
+        },
+        "type": "automation",
+        "preAutomationTime": 0,
+        "sla": 0,
+        "tags": [],
+        "groups": []
+      }
+    },
+    {
+      "type": "workflow",
+      "data": {
+        "canvasVersion": 1,
+        "created": "2022-02-22T21:55:43.068Z",
+        "createdVersion": "5.40.5-2021.1.52.0",
+        "created_by": {
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn",
+          "firstname": "admin",
+          "inactive": false,
+          "email": ""
+        },
+        "description": "",
+        "font_size": 12,
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "lastUpdatedVersion": "5.40.5-2021.1.72.0",
+        "last_updated": "2022-05-19T16:23:38.039Z",
+        "last_updated_by": {
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn",
+          "firstname": "admin",
+          "inactive": false,
+          "email": ""
+        },
+        "name": "Sample Child",
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{24}$"
+            },
+            "initiator": {
+              "type": "string"
+            }
+          }
+        },
+        "tasks": {
+          "3151": {
+            "name": "transformation",
+            "canvasName": "transformation",
+            "summary": "Sample JST",
+            "description": "Perform a JSON Transformation using the JST library.",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "operation",
+            "displayName": "WorkFlowEngine",
+            "variables": {
+              "incoming": {
+                "tr_id": "62155c8dc62a2f00dd49bc93",
+                "variableMap": {
+                  "string1": "hello",
+                  "string2": "world"
+                },
+                "options": {
+                  "extractOutput": true,
+                  "validateIncoming": true,
+                  "revertToDefaultValue": true
+                }
+              },
+              "outgoing": {
+                "outputString": null
+              }
+            },
+            "deprecated": false,
+            "groups": [],
+            "x": 0.34431372549019607,
+            "y": 0.4988038277511962,
+            "task_name": "Sample JST",
+            "retrySettings": null
+          },
+          "workflow_start": {
+            "name": "workflow_start",
+            "groups": [],
+            "x": 0,
+            "y": 0.5
+          },
+          "workflow_end": {
+            "name": "workflow_end",
+            "groups": [],
+            "x": 1,
+            "y": 0.5
+          },
+          "cd94": {
+            "name": "ViewData",
+            "canvasName": "ViewData",
+            "summary": "View Data",
+            "description": "Displays a message and runtime data to an operator. This can be used to request a decision, or used for acknowledgement only.",
+            "location": "Application",
+            "app": "WorkFlowEngine",
+            "displayName": "Tools",
+            "type": "manual",
+            "variables": {
+              "incoming": {
+                "header": "",
+                "message": "",
+                "body": "$var.3151.outputString",
+                "variables": {},
+                "btn_success": "ok",
+                "btn_failure": ""
+              },
+              "outgoing": {},
+              "error": "",
+              "decorators": []
+            },
+            "view": "/workflow_engine/task/ViewData",
+            "deprecated": false,
+            "groups": [],
+            "x": 0.6334056399132321,
+            "y": 0.4994487320837927,
+            "scheduled": false
+          }
+        },
+        "transitions": {
+          "1607": {},
+          "3151": {
+            "cd94": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "workflow_start": {
+            "3151": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "workflow_end": {},
+          "cd94": {
+            "workflow_end": {
+              "type": "standard",
+              "state": "success"
+            }
+          }
+        },
+        "type": "automation",
+        "tags": [],
+        "groups": []
+      }
+    },
+    {
+      "type": "workflow",
+      "data": {
+        "type": "automation",
+        "tasks": {
+          "workflow_start": {
+            "name": "workflow_start",
+            "groups": [],
+            "x": 0,
+            "y": 0.5
+          },
+          "workflow_end": {
+            "name": "workflow_end",
+            "groups": [],
+            "x": 1,
+            "y": 0.5
+          },
+          "308d": {
+            "name": "stub",
+            "canvasName": "stub",
+            "summary": "Stub",
+            "description": "Create a stub for an automated task",
+            "location": "Application",
+            "locationType": null,
+            "app": "WorkFlowEngine",
+            "type": "automatic",
+            "displayName": "Tools",
+            "variables": {
+              "incoming": {
+                "type": "success",
+                "delay": "",
+                "response": "Second child called"
+              },
+              "outgoing": {
+                "response": null
+              },
+              "error": "",
+              "decorators": []
+            },
+            "deprecated": false,
+            "groups": [],
+            "actor": "Pronghorn",
+            "x": 0.49770302476835354,
+            "y": 0.4995083579154376,
+            "scheduled": false
+          }
+        },
+        "transitions": {
+          "workflow_start": {
+            "308d": {
+              "type": "standard",
+              "state": "success"
+            }
+          },
+          "workflow_end": {},
+          "308d": {
+            "workflow_end": {
+              "type": "standard",
+              "state": "success"
+            }
+          }
+        },
+        "font_size": 12,
+        "name": "Sample Child 2",
+        "description": "",
+        "last_updated": "2022-03-21T17:24:22.746Z",
+        "last_updated_by": {
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn",
+          "firstname": "admin",
+          "inactive": false,
+          "email": ""
+        },
+        "lastUpdatedVersion": "5.40.5-2021.1.69.0",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{24}$"
+            },
+            "initiator": {
+              "type": "string"
+            }
+          }
+        },
+        "created": "2022-03-10T20:33:36.365Z",
+        "created_by": {
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn",
+          "firstname": "admin",
+          "inactive": false,
+          "email": ""
+        },
+        "createdVersion": "5.40.5-2021.1.69.0",
+        "tags": [],
+        "canvasVersion": 1,
+        "groups": []
+      }
+    },
+    {
+      "type": "json-forms",
+      "data": {
+        "id": "62155c76d490f300cf970230",
+        "bindingSchema": {},
+        "created": "2022-02-22T21:58:14.390Z",
+        "createdBy": "admin@pronghorn",
+        "description": "",
+        "lastUpdated": "2022-03-21T17:24:22.963Z",
+        "lastUpdatedBy": "admin@pronghorn",
+        "name": "Sample JSON Form",
+        "schema": {
+          "title": "Sample JSON Form",
+          "description": "",
+          "type": "object",
+          "required": [],
+          "properties": {
+            "text1": {
+              "type": "string",
+              "title": "Text 1",
+              "description": "",
+              "default": ""
+            },
+            "number1": {
+              "type": "number",
+              "title": "Number 1",
+              "description": ""
+            }
+          }
+        },
+        "struct": {
+          "type": "array",
+          "items": [
+            {
+              "nodeId": "7dd399c9-abed-4144-a18e-f0890c4df9cd",
+              "type": "string",
+              "title": "Text 1",
+              "description": "",
+              "placeholder": "Enter text",
+              "required": false,
+              "readOnly": false,
+              "binding": false,
+              "rel": "item",
+              "targetPointer": "/default",
+              "default": ""
+            },
+            {
+              "nodeId": "6c444c74-cf28-448e-8b14-c9e5a0c26c19",
+              "type": "number",
+              "widget": "updown",
+              "title": "Number 1",
+              "description": "",
+              "placeholder": "Enter a number",
+              "required": false
+            }
+          ]
+        },
+        "uiSchema": {
+          "text1": {
+            "ui:placeholder": "Enter text"
+          },
+          "number1": {
+            "ui:placeholder": "Enter a number",
+            "ui:widget": "updown"
+          }
+        },
+        "validationSchema": {},
+        "version": "2020.1"
+      }
+    },
+    {
+      "type": "golden-config",
+      "data": {
+        "status": "success",
+        "data": [
+          {
+            "_id": "62290d35de85ce00d0f529db",
+            "name": "testprebuilt-gc",
+            "treeId": "62290d353c769800d0236336",
+            "version": "initial",
+            "deviceType": "arista01",
+            "root": {
+              "name": "base",
+              "attributes": {
+                "devices": [],
+                "remediationWorkflow": null,
+                "configId": "62290d35de85ce00d0f529da",
+                "export": {
+                  "_id": "62290d35de85ce00d0f529da",
+                  "deviceType": "arista01",
+                  "lines": [],
+                  "template": "",
+                  "created": "2022-03-09T20:25:24.461Z",
+                  "createdBy": "62262c62e578fc77f0f3f14d",
+                  "lastUpdated": "2022-03-21T17:24:22.991Z",
+                  "lastUpdatedBy": "62262c62e578fc77f0f3f14d"
+                }
+              },
+              "children": []
+            },
+            "created": "1970-01-01T00:00:00.000Z",
+            "createdBy": "62262c62e578fc77f0f3f14d",
+            "lastUpdated": "2022-03-21T17:24:22.990Z",
+            "lastUpdatedBy": "62262c62e578fc77f0f3f14d",
+            "gbac": {
+              "write": [],
+              "read": []
+            },
+            "variables": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "transformation",
+      "data": {
+        "_id": "62155c8dc62a2f00dd49bc93",
+        "name": "Sample JST",
+        "description": "",
+        "incoming": [
+          {
+            "$id": "string1",
+            "type": "string"
+          },
+          {
+            "$id": "string2",
+            "type": "string"
+          }
+        ],
+        "outgoing": [
+          {
+            "$id": "outputString",
+            "type": "object",
+            "properties": {
+              "outputString": {
+                "type": "string",
+                "examples": [
+                  "test"
+                ]
+              }
+            },
+            "required": []
+          }
+        ],
+        "steps": [
+          {
+            "id": 1,
+            "type": "method",
+            "library": "String",
+            "method": "concat",
+            "args": [
+              null,
+              null
+            ],
+            "view": {
+              "row": 1,
+              "col": 2
+            }
+          },
+          {
+            "id": 2,
+            "type": "assign",
+            "from": {
+              "location": "incoming",
+              "name": "string1",
+              "ptr": ""
+            },
+            "to": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/args/0/value"
+            }
+          },
+          {
+            "id": 3,
+            "type": "assign",
+            "from": {
+              "location": "incoming",
+              "name": "string2",
+              "ptr": ""
+            },
+            "to": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/args/1/value"
+            }
+          },
+          {
+            "id": 4,
+            "type": "assign",
+            "from": {
+              "location": "method",
+              "name": 1,
+              "ptr": "/return"
+            },
+            "to": {
+              "location": "outgoing",
+              "name": "outputString",
+              "ptr": "/outputString"
+            }
+          }
+        ],
+        "functions": [],
+        "comments": [],
+        "view": {
+          "col": 3,
+          "row": 5
+        },
+        "created": "2022-03-21T17:24:22.803Z",
+        "createdBy": {
+          "_id": "62262c62e578fc77f0f3f14d",
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn"
+        },
+        "lastUpdated": "2022-03-31T16:41:27.672Z",
+        "lastUpdatedBy": {
+          "_id": "62262c62e578fc77f0f3f14d",
+          "provenance": "local_aaa",
+          "username": "admin@pronghorn"
+        },
+        "version": "3.17.7-2021.1.7",
+        "tags": []
+      }
+    }
+  ],
+  "readme": "<!-- This is a comment in md (Markdown) format, it will not be visible to the end user -->\n\n<!-- Update the below line with your Pre-Built name -->\n# Pre-Built Name\n\n<!-- Leave TOC intact unless you've added or removed headers -->\n## Table of Contents\n\n* [Overview](#overview)\n* [Installation Prerequisites](#installation-prerequisites)\n* [Requirements](#requirements)\n* [Features](#features)\n* [Future Enhancements](#future-enhancements)\n* [How to Install](#how-to-install)\n* [How to Run](#how-to-run)\n* [Additional Information](#additional-information)\n\n## Overview\n\n<!-- Write a few sentences about the Pre-Built and explain the use case(s) -->\n<!-- Avoid using the word Artifact. Please use Pre-Built, Pre-Built Transformation or Pre-Built Automation -->\n<!-- Ex.: The Migration Wizard enables IAP users to conveniently move their automation use cases between different IAP environments -->\n<!-- (e.g. from Dev to Pre-Production or from Lab to Production). -->\n\n<!-- Workflow(s) Image Placeholder - TO BE ADDED DIRECTLY TO GitLab -->\n<!-- REPLACE COMMENT BELOW WITH IMAGE OF YOUR MAIN WORKFLOW -->\n<!--\n<table><tr><td>\n  <img src=\"itential/testPP3/-/raw/refs/heads/main/images/workflow.png\" alt=\"workflow\" width=\"800px\">\n</td></tr></table>\n-->\n<!-- REPLACE COMMENT ABOVE WITH IMAGE OF YOUR MAIN WORKFLOW -->\n\n<!-- ADD ESTIMATED RUN TIME HERE -->\n<!-- e.g. Estimated Run Time: 34 min. -->\n_Estimated Run Time_:\n\n## Installation Prerequisites\n\nUsers must satisfy the following pre-requisites:\n\n<!-- Include any other required apps or adapters in this list -->\n<!-- Ex.: EC2 Adapter -->\n* Itential Automation Platform\n  * `^2021.1`\n\n## Requirements\n\nThis Pre-Built requires the following:\n\n<!-- Unordered list highlighting the requirements of the Pre-Built -->\n<!-- EXAMPLE -->\n<!-- * cisco ios device -->\n<!-- * Ansible or NSO (with F5 NED) * -->\n\n## Features\n\nThe main benefits and features of the Pre-Built are outlined below.\n\n<!-- Unordered list highlighting the most exciting features of the Pre-Built -->\n<!-- EXAMPLE -->\n<!-- * Automatically checks for device type -->\n<!-- * Displays dry-run to user (asking for confirmation) prior to pushing config to the device -->\n<!-- * Verifies downloaded file integrity (using md5), will try to download again if failed -->\n\n\n## Future Enhancements\n\n<!-- OPTIONAL - Mention if the Pre-Built will be enhanced with additional features on the road map -->\n<!-- Ex.: This Pre-Built would support Cisco XR and F5 devices -->\n\n## How to Install\n\nTo install the Pre-Built:\n\n* Verify you are running a supported version of the Itential Automation Platform (IAP) as listed above in the [Requirements](#requirements) section in order to install the Pre-Built. \n* The Pre-Built can be installed from within App-Admin_Essential. Simply search for the name of your desired Pre-Built and click the install button (as shown below).\n\n<!-- REPLACE BELOW WITH IMAGE OF YOUR PUBLISHED PRE-BUILT -->\n<!--\n<table><tr><td>\n  <img src=\"itential/testPP3/-/raw/refs/heads/main/images/install.png\" alt=\"install\" width=\"600px\">\n</td></tr></table>\n-->\n<!-- REPLACE ABOVE WITH IMAGE OF YOUR PUBLISHED PRE-BUILT -->\n\n<!-- OPTIONAL - Explain if external components are required outside of IAP -->\n<!-- Ex.: The Ansible roles required for this Pre-Built can be found in the repository located at https://gitlab.com/itentialopensource/pre-built-automations/hello-world -->\n\n## How to Run\n\nUse the following to run the Pre-Built:\n\n<!-- Explain the main entrypoint(s) for this Pre-Built: Automation Catalog item, Workflow, Postman, etc. -->\n\n## Additional Information\n\nPlease use your Itential Customer Success account if you need support when using this Pre-Built."
+}
