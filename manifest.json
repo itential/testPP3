@@ -1,8 +1,8 @@
 {
   "bundleName": "@dsup/jenn-demo",
   "version": "0.0.1",
-  "fingerprint": "6287f8106a443a00a8c3bfd8",
-  "createdEpoch": "1653078032146",
+  "fingerprint": "6287f95b6a443a00a8c3bfd9",
+  "createdEpoch": "1653078363021",
   "artifacts": [
     {
       "id": "Jenn Demo",

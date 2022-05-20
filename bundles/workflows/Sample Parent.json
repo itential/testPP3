@@ -15,7 +15,7 @@
     "properties": {}
   },
   "lastUpdatedVersion": "5.40.5-2021.1.72.0",
-  "last_updated": "2022-05-20T18:43:54.634Z",
+  "last_updated": "2022-05-20T20:25:23.776Z",
   "last_updated_by": {
     "provenance": "local_aaa",
     "username": "admin@pronghorn",
@@ -136,35 +136,6 @@
       "actor": "job",
       "x": 0.6442516268980477,
       "y": 0.49834619625137816
-    },
-    "84b": {
-      "name": "stub",
-      "canvasName": "stub",
-      "summary": "Stub",
-      "description": "Create a stub for an automated task",
-      "location": "Application",
-      "locationType": null,
-      "app": "WorkFlowEngine",
-      "type": "automatic",
-      "displayName": "Tools",
-      "variables": {
-        "incoming": {
-          "type": "success",
-          "delay": "",
-          "response": "test"
-        },
-        "outgoing": {
-          "response": null
-        },
-        "error": "",
-        "decorators": []
-      },
-      "deprecated": false,
-      "groups": [],
-      "actor": "Pronghorn",
-      "x": 0.8402024584237165,
-      "y": 0.39911797133406834,
-      "scheduled": false
     }
   },
   "transitions": {
@@ -188,18 +159,12 @@
       }
     },
     "f536": {
-      "84b": {
-        "type": "standard",
-        "state": "success"
-      }
-    },
-    "555d": {},
-    "84b": {
       "workflow_end": {
         "type": "standard",
         "state": "success"
       }
-    }
+    },
+    "555d": {}
   },
   "type": "automation",
   "preAutomationTime": 0,
